@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+    name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+            <complexType name="catalogInventoryStockItemEntity">
+                <all>
+                    <element name="manage_stock" type="xsd:string" minOccurs="0" />
+                    <element name="min_sale_qty" type="xsd:string" minOccurs="0" />
+                    <element name="use_config_min_sale_qty" type="xsd:string" minOccurs="0" />
+                    <element name="max_sale_qty" type="xsd:string" minOccurs="0" />
+                    <element name="use_config_max_sale_qty" type="xsd:string" minOccurs="0" />
+                    <element name="max_sale_qty" type="xsd:string" minOccurs="0" />
+                    <element name="use_config_max_sale_qty" type="xsd:string" minOccurs="0" />
+                    <element name="enable_qty_increments" type="xsd:string" minOccurs="0" />
+                    <element name="use_config_enable_qty_increments" type="xsd:string" minOccurs="0" />
+                    <element name="qty_increments" type="xsd:string" minOccurs="0" />
+                    <element name="use_config_qty_increments" type="xsd:string" minOccurs="0" />
+               </all>
+            </complexType>
+            <complexType name="catalogInventoryStockItemUpdateEntity">
+                <all>
+                    <element name="enable_qty_increments" type="xsd:int" minOccurs="0" />
+                    <element name="use_config_enable_qty_increments" type="xsd:int" minOccurs="0" />
+                    <element name="qty_increments" type="xsd:int" minOccurs="0" />
+                    <element name="use_config_qty_increments" type="xsd:int" minOccurs="0" />
+                </all>
+            </complexType>
+        </schema>
+    </types>
+</definitions>

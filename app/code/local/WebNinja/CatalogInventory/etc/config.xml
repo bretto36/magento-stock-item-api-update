@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Webninja_CatalogInventory>
+            <version>1.0.0.1</version>
+            <depends>
+                <Mage_Catalog />
+            </depends>
+        </Webninja_CatalogInventory>
+    </modules>
+    <global>
+        <models>
+            <cataloginventory>
+                <rewrite>
+                    <stock_item_api>Webninja_CatalogInventory_Model_Stock_Item_Api</stock_item_api>
+                    <stock_item_api_v2>Webninja_CatalogInventory_Model_Stock_Item_Api_V2</stock_item_api_v2>
+                </rewrite>
+            </cataloginventory>
+        </models>
+    </global>
+</config>
