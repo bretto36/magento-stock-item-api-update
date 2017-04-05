@@ -10,6 +10,11 @@
     </modules>
     <global>
         <models>
+            <catalog>
+                <rewrite>
+                    <product_api_v2>WebninjaCatalogInventory_Model_Product_Api_V2</product_api_v2>
+                </rewrite>
+            </catalog>
             <cataloginventory>
                 <rewrite>
                     <stock_item_api>WebninjaCatalogInventory_Model_Stock_Item_Api</stock_item_api>

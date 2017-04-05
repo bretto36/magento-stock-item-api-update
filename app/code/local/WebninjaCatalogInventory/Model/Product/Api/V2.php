@@ -26,63 +26,14 @@
  */
 
 /**
- * Catalog inventory api
+ * Catalog inventory api V2
  *
  * @category Mage
  * @package Mage_CatalogInventory
  * @author Magento Core Team <core@magentocommerce.com>
  */
-class WebninjaCatalogInventory_Model_Stock_Item_Api extends Mage_CatalogInventory_Model_Stock_Item_Api
+class WebninjaCatalogInventory_Model_Stock_Item_Api_V2 extends WebninjaCatalogInventory_Model_Stock_Item_Api
 {
-    public function __construct()
-    {
-        $this->_storeIdSessionField = 'product_store_id';
-    }
-
-    public function items($productIds)
-    {
-        if (! is_array($productIds)) {
-            $productIds = array(
-                $productIds
-            );
-        }
-
-        $product = Mage::getModel('catalog/product');
-
-        foreach ($productIds as &$productId) {
-            if ($newId = $product->getIdBySku($productId)) {
-                $productId = $newId;
-            }
-        }
-
-        $collection = Mage::getModel('catalog/product')->getCollection()->setFlag('require_stock_items', true)->addFieldToFilter('entity_id', array(
-            'in' => $productIds
-        ));
-
-        $result = array();
-        foreach ($collection as $product) {
-            if ($product->getStockItem()) {
-                $result[] = array(
-                    'product_id' => $product->getId(),
-                    'sku' => $product->getSku(),
-                    'qty' => $product->getStockItem()->getQty(),
-                    'is_in_stock' => $product->getStockItem()->getIsInStock(),
-                    'manage_stock' => $product->getStockItem()->getManageStock(),
-                    'min_sale_qty' => $product->getStockItem()->getMinSaleQty(),
-                    'use_config_min_sale_qty' => $product->getStockItem()->getUseConfigMinSaleQty(),
-                    'max_sale_qty' => $product->getStockItem()->getMaxSaleQty(),
-                    'use_config_max_sale_qty' => $product->getStockItem()->getUseConfigMaxSaleQty(),
-                    'enable_qty_increments' => ($product->getStockItem()->getEnableQtyIncrements() ? 1 : 0),
-                    'use_config_enable_qty_increments' => $product->getStockItem()->getUseConfigEnableQtyIncrements(),
-                    'qty_increments' => $product->getStockItem()->getQtyIncrements(),
-                    'use_config_qty_increments' => $product->getStockItem()->getUseConfigQtyIncrements(),
-                );
-            }
-        }
-
-        return $result;
-    }
-
     public function update($productId, $data)
     {
         $product = Mage::getModel('catalog/product');
@@ -101,8 +52,8 @@ class WebninjaCatalogInventory_Model_Stock_Item_Api extends Mage_CatalogInventor
             $stockData = array();
         }
 
-        if (isset($data['qty'])) {
-            $stockData['qty'] = $data['qty'];
+        if (isset($data->qty)) {
+            $stockData['qty'] = $data->qty;
         }
 
         if (isset($data->is_in_stock)) {
