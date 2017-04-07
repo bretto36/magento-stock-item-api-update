@@ -1,6 +1,6 @@
 <?php
 
-class WebninjaCatalogInventory_Model_Stock_Item_Api_V2 extends WebninjaCatalogInventory_Model_Stock_Item_Api
+class WebninjaCatalogInventory_Model_Stock_Item_Api_V2 extends Mage_CatalogInventory_Model_Stock_Item_Api_V2
 {
     public function update($productId, $data)
     {
